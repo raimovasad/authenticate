@@ -30,9 +30,14 @@ userSchema.pre("save", async function(next){
     if(!this.isModified("password")){
         next();
     }
-    const salt = await bcrypt.getSalt(10)
+  const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
     next();
-})
+    
+});
 
-module.exports = model('User',userSchema)
+userSchema.methods.matchPasswords = async function(password){
+    return await bcrypt.compare(password,this.password)
+}
+
+module.exports = model('User',userSchema) 
