@@ -5,6 +5,7 @@ const {register,login,forgotpassword,resetpassword} = require('../controllers/au
 
 router.route('/register').post(register)
 
+
 router.route('/login').post(login)
 
 router.route('/forgotpassword').post(forgotpassword)
