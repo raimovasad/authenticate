@@ -4,4 +4,5 @@ exports.getPrivateData = (req,res,next)=>{
             success:true,
             data:"You got access to the private data in this route"
         })
+        next()
 }
